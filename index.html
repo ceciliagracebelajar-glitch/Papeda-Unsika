@@ -1,1 +1,877 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PAPEDA UNSIKA | UMKM Kuliner</title>
 
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8ee;
+            color: #333;
+        }
+
+        header {
+            background: #f47721;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .judul-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+        }
+
+        .logo-header {
+            width: 64px;
+            height: 64px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+        }
+
+        nav {
+            background: #333;
+            padding: 13px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 0 12px;
+            font-weight: bold;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 55px 20px;
+            background: #ffe2bd;
+        }
+
+        .hero h2 {
+            font-size: 32px;
+            margin-bottom: 12px;
+            color: #b94d08;
+        }
+
+        .hero p {
+            margin-bottom: 20px;
+        }
+
+        .button {
+            display: inline-block;
+            padding: 12px 20px;
+            background: #f47721;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .menu {
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .menu h2 {
+            margin-bottom: 25px;
+            font-size: 28px;
+        }
+
+        .produk-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .produk {
+            background: white;
+            border-radius: 14px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px #00000015;
+            padding-bottom: 20px;
+        }
+
+        .produk img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+        }
+
+        .produk h3 {
+            margin: 15px 8px 8px;
+        }
+
+        .produk p {
+            margin: 8px;
+            color: #666;
+        }
+
+        .harga {
+            color: #e76512 !important;
+            font-size: 19px;
+            font-weight: bold;
+        }
+
+        .jumlah {
+            margin: 12px 0;
+        }
+
+        .jumlah button {
+            width: 32px;
+            height: 30px;
+            border: none;
+            background: #ffe2bd;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+        }
+
+        .jumlah span {
+            display: inline-block;
+            min-width: 35px;
+            font-weight: bold;
+        }
+
+        .keranjang {
+            max-width: 800px;
+            margin: 15px auto 40px;
+            background: white;
+            padding: 25px;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px #00000010;
+        }
+
+        .keranjang h2 {
+            margin-bottom: 15px;
+        }
+
+        #daftarPesanan p {
+            margin: 10px 0;
+        }
+
+        .total {
+            font-size: 21px;
+            font-weight: bold;
+            color: #e76512;
+            margin: 20px 0;
+        }
+
+        .form-pesan {
+            display: grid;
+            gap: 8px;
+            margin-top: 14px;
+        }
+
+        .form-pesan input,
+        .form-pesan select,
+        .form-pesan textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 7px;
+        }
+
+        .tentang {
+            background: #ffe2bd;
+            padding: 35px 20px;
+            text-align: center;
+        }
+
+        .logo-usaha {
+            display: block;
+            width: 160px;
+            height: 160px;
+            object-fit: contain;
+            margin: 0 auto 15px;
+            background: white;
+            border-radius: 50%;
+            padding: 0;
+            box-shadow: 0 4px 12px #00000020;
+        }
+
+        .tentang h2 {
+            margin-bottom: 10px;
+        }
+
+        .tentang p {
+            max-width: 750px;
+            margin: 15px auto;
+            line-height: 1.7;
+        }
+
+        .logo-usaha {
+            width: 160px;
+            height: 160px;
+            margin: 5px auto 10px;
+        }
+
+        .logo-usaha svg,
+        .logo-usaha img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            border-radius: 50%;
+            filter: drop-shadow(0 4px 8px #00000022);
+        }
+
+        .info-usaha {
+            max-width: 600px;
+            margin: 20px auto;
+            background: white;
+            border-radius: 14px;
+            box-shadow: 0 4px 12px #00000012;
+            padding: 8px 22px;
+            text-align: left;
+        }
+
+        .info-usaha .baris {
+            display: flex;
+            gap: 12px;
+            padding: 13px 0;
+            border-bottom: 1px solid #f1e3cf;
+        }
+
+        .info-usaha .baris:last-child {
+            border-bottom: none;
+        }
+
+        .info-usaha .label {
+            flex: 0 0 140px;
+            font-weight: bold;
+            color: #b94d08;
+        }
+
+        .info-usaha .nilai {
+            flex: 1;
+        }
+
+        .tentang h3 {
+            margin-top: 25px;
+        }
+
+        [hidden] {
+            display: none !important;
+        }
+
+        .teks-header {
+            text-align: center;
+        }
+
+        .rincian {
+            margin-top: 14px;
+            padding: 16px;
+            background: #fff8ee;
+            border: 2px dashed #f47721;
+            border-radius: 12px;
+        }
+
+        .rincian h3 {
+            margin-bottom: 8px;
+            color: #b94d08;
+        }
+
+        .rincian .baris-rincian {
+            display: flex;
+            gap: 10px;
+            padding: 6px 0;
+        }
+
+        .rincian .baris-rincian .k {
+            flex: 0 0 160px;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            font-weight: bold;
+        }
+
+        .rincian .baris-rincian .ikon {
+            flex: 0 0 24px;
+            text-align: center;
+        }
+
+        .rincian .baris-rincian .v {
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .rincian .item {
+            padding: 8px 0;
+            border-bottom: 1px solid #f1e3cf;
+        }
+
+        .rincian .total-rincian {
+            margin: 14px 0;
+            font-size: 20px;
+            font-weight: bold;
+            color: #e76512;
+        }
+
+        .rincian .catatan {
+            font-size: 13px;
+            color: #777;
+            margin-bottom: 14px;
+        }
+
+        .aksi-rincian {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .terima-kasih {
+            text-align: center;
+            margin: 16px 0 12px;
+        }
+
+        .terima-kasih p {
+            margin: 0;
+            font-weight: bold;
+            color: #b94d08;
+            line-height: 1.6;
+        }
+
+        .terima-kasih img {
+            display: block;
+            width: 150px;
+            height: 150px;
+            margin: 10px auto 0;
+            border-radius: 50%;
+            object-fit: contain;
+            background: white;
+        }
+
+        .tombol-ubah {
+            background: #888;
+        }
+
+        .tombol-pesan {
+            background: #25a244;
+        }
+
+        footer a {
+            color: #ffd9a8;
+            text-decoration: none;
+        }
+
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 22px;
+            line-height: 1.8;
+        }
+
+        @media (max-width: 500px) {
+            nav a {
+                display: inline-block;
+                margin: 5px;
+                font-size: 14px;
+            }
+
+            .hero h2 {
+                font-size: 26px;
+            }
+
+            .judul-header h1 {
+                font-size: 24px;
+            }
+
+            .rincian .baris-rincian {
+                flex-direction: column;
+                gap: 2px;
+                padding: 8px 0;
+            }
+
+            .rincian .baris-rincian .k {
+                flex: none;
+            }
+
+            .info-usaha .baris {
+                flex-direction: column;
+                gap: 2px;
+            }
+
+            .info-usaha .label {
+                flex: none;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="judul-header">
+        <img src="logo.jpg" alt="Logo Papeda UNSIKA" class="logo-header">
+        <div class="teks-header">
+            <h1>PAPEDA UNSIKA</h1>
+            <p>Jajanan Enak, Harga Bersahabat!</p>
+        </div>
+    </div>
+</header>
+
+<nav>
+    <a href="#beranda">Beranda</a>
+    <a href="#menu">Menu Produk</a>
+    <a href="#pesanan">Pesanan</a>
+    <a href="#tentang">Tentang Kami</a>
+</nav>
+
+<section class="hero" id="beranda">
+    <h2>Nikmati Jajanan Favoritmu!</h2>
+    <p>Papeda, Maklor, dan Minuman Segar dengan Harga Bersahabat.</p>
+    <a href="#menu" class="button">Lihat Menu</a>
+</section>
+
+<section class="menu" id="menu">
+    <h2>🍴 Menu Produk Kami</h2>
+
+    <div class="produk-container" id="produkContainer"></div>
+</section>
+
+<section class="keranjang" id="pesanan">
+    <h2>🛒 Keranjang dan Form Pemesanan</h2>
+
+    <div id="daftarPesanan">
+        <p>Belum ada produk yang dipilih.</p>
+    </div>
+
+    <div class="total">
+        Total: <span id="totalHarga">Rp0</span>
+    </div>
+
+    <form class="form-pesan" id="formPesan">
+        <label for="nama">👤 Nama pelanggan:</label>
+        <input type="text" id="nama" placeholder="Masukkan nama kamu" required>
+
+        <label for="whatsapp">📱 Nomor WhatsApp:</label>
+        <input type="tel" id="whatsapp" placeholder="08xxxxxxxxxx" required>
+
+        <label for="pengiriman">🛵 Jenis pesanan:</label>
+        <select id="pengiriman">
+            <option>Ambil di tempat</option>
+            <option>Diantar (konfirmasi ongkir)</option>
+        </select>
+
+        <label for="alamat">📍 Alamat pengantaran:</label>
+        <textarea id="alamat" rows="2" placeholder="Masukkan alamat jika ingin diantar"></textarea>
+
+        <label for="catatan">📝 Catatan pesanan (opsional):</label>
+        <textarea id="catatan" rows="2" placeholder="Contoh: tidak pakai pedas, es dipisah"></textarea>
+
+        <label for="pembayaran">💳 Metode pembayaran:</label>
+        <select id="pembayaran" required>
+            <option value="">-- Pilih Pembayaran --</option>
+            <option value="QRIS">QRIS</option>
+            <option value="E-wallet">E-wallet</option>
+            <option value="DANA">DANA</option>
+        </select>
+
+        <p style="font-size:13px;color:#777">
+            Detail pembayaran akan dikonfirmasi oleh penjual.
+            Pastikan informasi pembayaran resmi sebelum melakukan transfer.
+        </p>
+
+        <button type="submit" class="button">
+            Konfirmasi Pesanan
+        </button>
+    </form>
+
+    <div class="rincian" id="rincian" hidden>
+        <h3>📋 Rincian Pesanan</h3>
+        <div id="isiRincian"></div>
+
+        <div class="terima-kasih">
+            <p>Terima kasih telah memesan</p>
+            <p>Kami tunggu pesanan kamu selanjutnya 💕</p>
+            <img src="terima-kasih.jpg" alt="Terima kasih - Papeda UNSIKA">
+        </div>
+        <p class="catatan">
+            Periksa kembali pesananmu. Jika sudah benar, tekan
+            "Pesan Sekarang" untuk melanjutkan ke WhatsApp penjual.
+        </p>
+        <div class="aksi-rincian">
+            <button type="button" class="button tombol-ubah" id="tombolUbah">Ubah Pesanan</button>
+            <button type="button" class="button tombol-pesan" id="tombolPesan">Pesan Sekarang</button>
+        </div>
+    </div>
+</section>
+
+<section class="tentang" id="tentang">
+    <img
+        src="logo.jpg"
+        alt="Logo Papeda UNSIKA"
+        class="logo-usaha"
+    >
+
+    <h2>Tentang Kami</h2>
+
+    <p>
+        Papeda UNSIKA merupakan usaha produktif mikro yang bergerak
+        di bidang kuliner makanan tradisional. Kami menyediakan berbagai
+        jajanan dan minuman segar dengan harga yang ramah di kantong.
+    </p>
+
+    <div class="info-usaha">
+        <div class="baris">
+            <div class="label">🏪 Nama Usaha</div>
+            <div class="nilai">: Papeda UNSIKA</div>
+        </div>
+        <div class="baris">
+            <div class="label">🍽️ Jenis Usaha</div>
+            <div class="nilai">: Makanan Tradisional</div>
+        </div>
+        <div class="baris">
+            <div class="label">🥘 Produk Utama</div>
+            <div class="nilai">: Papeda, Es Kelapa, Es Jeruk, dan Maklor</div>
+        </div>
+        <div class="baris">
+            <div class="label">👨‍🍳 Pemilik</div>
+            <div class="nilai">: Kang Husein</div>
+        </div>
+        <div class="baris">
+            <div class="label">📅 Tahun Berdiri</div>
+            <div class="nilai">: 2018</div>
+        </div>
+        <div class="baris">
+            <div class="label">📍 Lokasi Usaha</div>
+            <div class="nilai">: Jl. H.S. Ronggowaluyo, Telukjambe, Puseurjaya, Karawang, Jawa Barat.</div>
+        </div>
+    </div>
+
+    <a
+        class="button"
+        target="_blank"
+        rel="noopener"
+        href="https://www.google.com/maps/search/?api=1&query=Jl+HS+Ronggowaluyo+Telukjambe+Puseurjaya+Karawang+Jawa+Barat"
+    >
+        📍 Lihat Lokasi
+    </a>
+</section>
+
+<footer>
+    <h3>PAPEDA UNSIKA</h3>
+    <p>UMKM Kuliner Lokal Karawang</p>
+    <p>📧 Email : <a href="mailto:papedaunsika@gmail.com">papedaunsika@gmail.com</a></p>
+    <p>📞 Telp : <a href="tel:+6285778210068">+6285778210068</a></p>
+    <p>© <span id="tahun"></span> Papeda UNSIKA</p>
+</footer>
+
+<script>
+    // GANTI dengan nomor WhatsApp penjual.
+    // Gunakan kode negara Indonesia tanpa tanda +.
+    // Contoh format: 6281234567890
+    const NOMOR_WA_PENJUAL = "6285778210068";
+
+    const produk = [
+        {
+            id: 0,
+            nama: "Papeda",
+            harga: 5000,
+            satuan: "porsi",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQ7mpfd-AebFgxNIKGDMi0w3PZLaIP3cARKlrrWdCwsKg&s=10",
+            deskripsi: "Papeda gurih dengan bumbu pilihan."
+        },
+        {
+            id: 1,
+            nama: "Es Kelapa",
+            harga: 6000,
+            satuan: "cup",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTUziBM3KzK93J_gSCX9FByDZUghBx-i8WiyfajihjhSA&s=10",
+            deskripsi: "Minuman segar untuk melepas dahaga."
+        },
+        {
+            id: 2,
+            nama: "Es Jeruk Peras",
+            harga: 6000,
+            satuan: "cup",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSgkPtR7KN5hsw5QatfSni3DkqY4gEq44R1YSa2Z3j_yw&s=10",
+            deskripsi: "Jeruk peras segar dan menyegarkan."
+        },
+        {
+            id: 3,
+            nama: "Maklor",
+            harga: 5000,
+            satuan: "cup",
+            gambar: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSP5XT9eQBxjnpxaVhqREF7pu-taQ2wPS6z_MA-kZhr2Q&s=10",
+            deskripsi: "Makaroni telur dengan bumbu gurih."
+        }
+    ];
+
+    const jumlah = [0, 0, 0, 0];
+    const emojiProduk = ["🍲", "🥥", "🍊", "🍝"];
+    let pesanWA = "";
+
+    function esc(teks) {
+        const d = document.createElement("div");
+        d.textContent = teks;
+        return d.innerHTML;
+    }
+
+    function rupiah(angka) {
+        return new Intl.NumberFormat("id-ID", {
+            style: "currency",
+            currency: "IDR",
+            maximumFractionDigits: 0
+        }).format(angka);
+    }
+
+    function tampilkanProduk() {
+        const wadah = document.getElementById("produkContainer");
+
+        wadah.innerHTML = produk.map((p, i) => `
+            <div class="produk">
+                <img
+                    src="${p.gambar}"
+                    alt="${p.nama}"
+                    loading="lazy"
+                    onerror="this.onerror=null;this.src='https://placehold.co/600x400/ffe2bd/9b4815?text=${encodeURIComponent(p.nama)}'"
+                >
+
+                <h3>${p.nama}</h3>
+
+                <p>${p.deskripsi}</p>
+
+                ${p.id === 3 ? `
+                    <label for="hargaMaklor">Pilih harga maklor:</label>
+                    <select
+                        id="hargaMaklor"
+                        onchange="ubahHargaMaklor(this.value)"
+                    >
+                        <option value="5000">Rp5.000</option>
+                        <option value="7000">Rp7.000</option>
+                        <option value="10000">Rp10.000</option>
+                    </select>
+                ` : ""}
+
+                <p class="harga" id="harga-${i}">
+                    ${rupiah(p.harga)} / ${p.satuan}
+                </p>
+
+                <div class="jumlah">
+                    <button
+                        type="button"
+                        onclick="ubahJumlah(${i}, -1)"
+                        aria-label="Kurangi ${p.nama}"
+                    >−</button>
+
+                    <span id="jumlah-${i}">0</span>
+
+                    <button
+                        type="button"
+                        onclick="ubahJumlah(${i}, 1)"
+                        aria-label="Tambah ${p.nama}"
+                    >+</button>
+                </div>
+
+                <button
+                    class="button"
+                    type="button"
+                    onclick="beli(${i})"
+                >Beli Sekarang</button>
+            </div>
+        `).join("");
+    }
+
+    function ubahHargaMaklor(harga) {
+        produk[3].harga = Number(harga);
+        document.getElementById("harga-3").textContent =
+            rupiah(produk[3].harga) + " / cup";
+        perbaruiKeranjang();
+    }
+
+    function ubahJumlah(index, perubahan) {
+        jumlah[index] = Math.max(0, jumlah[index] + perubahan);
+
+        document.getElementById("jumlah-" + index).textContent =
+            jumlah[index];
+
+        perbaruiKeranjang();
+    }
+
+    function beli(index) {
+        if (jumlah[index] === 0) {
+            jumlah[index] = 1;
+            document.getElementById("jumlah-" + index).textContent = "1";
+        }
+
+        perbaruiKeranjang();
+
+        document.getElementById("pesanan").scrollIntoView({
+            behavior: "smooth"
+        });
+    }
+
+    function perbaruiKeranjang() {
+        const daftar = document.getElementById("daftarPesanan");
+        let total = 0;
+        let html = "";
+
+        produk.forEach((p, i) => {
+            if (jumlah[i] > 0) {
+                const subtotal = p.harga * jumlah[i];
+
+                total += subtotal;
+
+                html += `
+                    <p>
+                        <strong>${p.nama}</strong><br>
+                        ${jumlah[i]} ${p.satuan} × ${rupiah(p.harga)}
+                        = <strong>${rupiah(subtotal)}</strong>
+                    </p>
+                `;
+            }
+        });
+
+        daftar.innerHTML = html ||
+            "<p>Belum ada produk yang dipilih.</p>";
+
+        document.getElementById("totalHarga").textContent =
+            rupiah(total);
+
+        // Pesanan berubah, jadi rincian lama disembunyikan
+        document.getElementById("rincian").hidden = true;
+        pesanWA = "";
+    }
+
+    document.getElementById("formPesan").addEventListener(
+        "submit",
+        function(event) {
+            event.preventDefault();
+
+            const itemDipilih = produk.filter(
+                (p, i) => jumlah[i] > 0
+            );
+
+            if (itemDipilih.length === 0) {
+                alert("Silakan pilih produk terlebih dahulu.");
+                return;
+            }
+
+            const nama = document.getElementById("nama").value.trim();
+            const waPelanggan =
+                document.getElementById("whatsapp").value.trim();
+            const pengiriman =
+                document.getElementById("pengiriman").value;
+            const alamat =
+                document.getElementById("alamat").value.trim();
+            const catatan =
+                document.getElementById("catatan").value.trim();
+            const pembayaran =
+                document.getElementById("pembayaran").value;
+
+            if (!nama || !waPelanggan || !pembayaran) {
+                alert("Mohon lengkapi formulir pemesanan.");
+                return;
+            }
+
+            let total = 0;
+            let htmlItem = "";
+            let pesan = [
+                "Halo, saya ingin memesan di Papeda UNSIKA.",
+                "",
+                "Nama: " + nama,
+                "WhatsApp pelanggan: " + waPelanggan,
+                "",
+                "DAFTAR PESANAN:"
+            ];
+
+            itemDipilih.forEach(p => {
+                const subtotal = p.harga * jumlah[p.id];
+                total += subtotal;
+
+                pesan.push(
+                    "- " + p.nama +
+                    ": " + jumlah[p.id] + " " + p.satuan +
+                    " × " + rupiah(p.harga) +
+                    " = " + rupiah(subtotal)
+                );
+
+                htmlItem += `
+                    <div class="item">
+                        <strong>${emojiProduk[p.id]} ${p.nama}</strong><br>
+                        ${jumlah[p.id]} ${p.satuan} × ${rupiah(p.harga)}
+                        = <strong>${rupiah(subtotal)}</strong>
+                    </div>
+                `;
+            });
+
+            pesan.push(
+                "",
+                "Total: " + rupiah(total),
+                "Jenis pesanan: " + pengiriman,
+                "Alamat: " + (alamat || "-"),
+                "Catatan: " + (catatan || "-"),
+                "Metode pembayaran: " + pembayaran,
+                "",
+                "Mohon konfirmasi ketersediaan dan detail pembayaran. Terima kasih."
+            );
+
+            document.getElementById("isiRincian").innerHTML = `
+                <div class="baris-rincian"><span class="k"><span class="ikon">👤</span><span>Nama</span></span><span class="v">${esc(nama)}</span></div>
+                <div class="baris-rincian"><span class="k"><span class="ikon">📱</span><span>WhatsApp</span></span><span class="v">${esc(waPelanggan)}</span></div>
+                <div class="baris-rincian"><span class="k"><span class="ikon">🛵</span><span>Jenis pesanan</span></span><span class="v">${esc(pengiriman)}</span></div>
+                <div class="baris-rincian"><span class="k"><span class="ikon">📍</span><span>Alamat</span></span><span class="v">${esc(alamat || "-")}</span></div>
+                <div class="baris-rincian"><span class="k"><span class="ikon">📝</span><span>Catatan</span></span><span class="v">${esc(catatan || "-")}</span></div>
+                <div class="baris-rincian"><span class="k"><span class="ikon">💳</span><span>Pembayaran</span></span><span class="v">${esc(pembayaran)}</span></div>
+                <h4 style="margin:10px 0 2px">🛍️ Daftar pesanan</h4>
+                ${htmlItem}
+                <div class="total-rincian">💰 Total: ${rupiah(total)}</div>
+            `;
+
+            pesanWA = pesan.join("\n");
+
+            const kotak = document.getElementById("rincian");
+            kotak.hidden = false;
+            kotak.scrollIntoView({ behavior: "smooth", block: "nearest" });
+        }
+    );
+
+    document.getElementById("tombolPesan").addEventListener(
+        "click",
+        function() {
+            if (!pesanWA) return;
+
+            window.open(
+                "https://wa.me/" + NOMOR_WA_PENJUAL +
+                "?text=" + encodeURIComponent(pesanWA),
+                "_blank"
+            );
+        }
+    );
+
+    document.getElementById("tombolUbah").addEventListener(
+        "click",
+        function() {
+            document.getElementById("rincian").hidden = true;
+            document.getElementById("pesanan").scrollIntoView({
+                behavior: "smooth",
+                block: "start"
+            });
+        }
+    );
+
+    document.getElementById("tahun").textContent =
+        new Date().getFullYear();
+
+    tampilkanProduk();
+</script>
+
+</body>
+</html>
